@@ -10,7 +10,7 @@ int main(int, char**){
 
         for (std::string line; std::getline(std::cin, line);)
         {
-            auto parts = split(line,' ');
+            auto parts = split(line,'\t');
             if(parts.empty()) continue;
 
             auto bytes = split(parts[0],'.');
@@ -24,6 +24,7 @@ int main(int, char**){
                 ip_pool.push_back(ip);
             }
         }
+        work_and_print_ip(ip_pool);
     }
     catch(const std::exception& e)
     {

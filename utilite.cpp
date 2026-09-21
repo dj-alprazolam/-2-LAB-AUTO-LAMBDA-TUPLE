@@ -13,7 +13,7 @@ void work_and_print_ip(std::vector<ip_tuple> ip_pool){
         std::cout << std::get<0>(ip)<<"."
                   << std::get<1>(ip)<<"."
                   << std::get<2>(ip)<<"."
-                  << std::get<3>(ip)<<"/n";
+                  << std::get<3>(ip)<<"\n";
     };
 
     for (auto const& ip: ip_pool)
