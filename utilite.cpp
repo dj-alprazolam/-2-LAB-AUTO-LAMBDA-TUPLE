@@ -5,9 +5,7 @@
 #include<algorithm>
 void work_and_print_ip(std::vector<ip_tuple> ip_pool){
 
-    std::sort(ip_pool.begin(), ip_pool.end(),[](const ip_tuple& a, const ip_tuple& b ){
-        return a > b;
-    });
+    std::sort(ip_pool.rbegin(), ip_pool.rend());
 
     auto print_ip = [](const ip_tuple& ip){
         std::cout << std::get<0>(ip)<<"."
