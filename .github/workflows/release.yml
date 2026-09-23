@@ -46,7 +46,7 @@ jobs:
         with:
           name: ubuntu-package
           path: build/*.deb
-          if-no-files-found: warn
+          if-no-files-found: error
 
   build-windows:
     runs-on: windows-latest
@@ -87,12 +87,17 @@ jobs:
           cd build
           ctest --output-on-failure -C Release
 
+      - name: Debug - list build output
+        shell: msys2 {0}
+        run: |
+          find build -type f -name "*.exe" || true
+
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v4
         with:
           name: windows-exe
-          path: build/helloworld_cli.exe
-          if-no-files-found: warn
+          path: build/**/*.exe
+          if-no-files-found: error
 
   create-release:
     needs: [build-ubuntu, build-windows]
